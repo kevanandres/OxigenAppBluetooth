@@ -29,8 +29,6 @@ public class Patient extends AppCompatActivity {
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
 
-    private String hola = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
