@@ -3,12 +3,12 @@ package com.tit.oxigenapp;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println("15");
-
+        ObtenerDatos paciente = new ObtenerDatos();
+        paciente.conectar();
+        System.out.println(paciente.conectar());
     }
 }

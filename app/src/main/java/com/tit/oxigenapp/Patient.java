@@ -26,8 +26,6 @@ public class Patient extends AppCompatActivity {
     FirebaseAuth fAuth;
     TextView bienvenido_txt;
     private String idUser;
-    private AlarmManager alarmMgr;
-    private PendingIntent alarmIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +47,6 @@ public class Patient extends AppCompatActivity {
         Button logout = findViewById(R.id.logout_paciente_btn);
 
         bienvenido_txt.setText(user.getEmail());
-
-        alarmMgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-
-        alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                1000 * 60 * 1,
-                1000 * 60 * 1, alarmIntent);
 
         //Para llamar a otras clases y interfaz
         logout.setOnClickListener(new View.OnClickListener() {
