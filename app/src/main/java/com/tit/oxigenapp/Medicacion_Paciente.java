@@ -42,7 +42,7 @@ public class Medicacion_Paciente extends AppCompatActivity {
         idUser = fAuth.getCurrentUser().getUid();
 
         medicacionPac = findViewById(R.id.medicacion_txt);
-        nomDoctor = findViewById(R.id.nom_doctorinf_txt);
+        nomDoctor = findViewById(R.id.nom_doctor_txt);
         regresarBtn = findViewById(R.id.regresar_doc_btn);
         obtenerDoc();
         obtenerDatos();

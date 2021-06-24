@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,6 +35,14 @@ public class Login extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
+        try {
+            FirebaseUser user = fAuth.getCurrentUser();
+            System.out.println("Cerrado" + user.getUid());
+        } catch (Exception e) {
+            System.out.println("No esta logeado.");
+        }
+
 
         email = findViewById(R.id.email_txt);
         password = findViewById(R.id.password_txt);

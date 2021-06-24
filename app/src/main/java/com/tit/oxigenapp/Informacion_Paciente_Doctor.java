@@ -22,8 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Informacion_Paciente_Doctor extends AppCompatActivity {
-    TextView email, prueba;
-    EditText nombre_txt, dir_txt, tel_txt, id;
+    EditText id;
+    TextView nombre_txt, dir_txt, tel_txt, email;
     FirebaseFirestore fstore;
     FirebaseAuth fAuth;
     private String idUser;
@@ -48,7 +48,7 @@ public class Informacion_Paciente_Doctor extends AppCompatActivity {
         final FirebaseUser user = fAuth.getCurrentUser();
         fstore = FirebaseFirestore.getInstance();
 
-        prueba= findViewById(R.id.textView2);
+        //prueba= findViewById(R.id.textView2);
         Bundle parametros = this.getIntent().getExtras();
         String datos = parametros.getString("datos");
 

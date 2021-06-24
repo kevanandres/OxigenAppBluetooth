@@ -26,6 +26,8 @@ public class Patient extends AppCompatActivity {
     FirebaseAuth fAuth;
     TextView bienvenido_txt;
     private String idUser;
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +51,12 @@ public class Patient extends AppCompatActivity {
         bienvenido_txt.setText(user.getEmail());
 
         //Para llamar a otras clases y interfaz
-        logout.setOnClickListener(new View.OnClickListener() {
+        /*logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),Login.class));
-                finish();
+                logoutAdmin();
             }
-        });
+        });*/
 
         historicoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +97,15 @@ public class Patient extends AppCompatActivity {
                 finish();
             }
         });
+    }
 
+     public void logoutAdmin(View view) {
+        FirebaseAuth.getInstance().signOut();
+         Intent intent = new Intent(this, AlarmReceiver.class);
+         PendingIntent sender = PendingIntent.getBroadcast(this, 1, intent, 0);
+         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+         alarmManager.cancel(sender);
+        startActivity(new Intent(getApplicationContext(),Login.class));
+        finish();
     }
 }

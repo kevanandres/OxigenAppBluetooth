@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -69,17 +70,13 @@ public class Diagrama_Paciente_Doctor  extends AppCompatActivity {
             }
         });
 
-
         fStore = FirebaseFirestore.getInstance();
-
 
         fAuth = FirebaseAuth.getInstance();
 
         idUser = fAuth.getCurrentUser().getUid();
 
-        CollectionReference pacienteRef = fStore.collection("Usuarios").document(datos).collection("spo2");
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, porcentaje);
-        //  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
 
         //sp_Paciente.setAdapter(adapter);
         pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -143,17 +140,13 @@ public class Diagrama_Paciente_Doctor  extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         regresarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Doctor.class));
             }
         });
+
         buscarFecha.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -169,7 +162,7 @@ public class Diagrama_Paciente_Doctor  extends AppCompatActivity {
 
                     idUser = fAuth.getCurrentUser().getUid();
 
-                    CollectionReference pacienteRef = fStore.collection("Usuarios").document(datos).collection("spo2");
+                    Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
 
                     pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

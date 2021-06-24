@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +36,7 @@ public class Doctor extends AppCompatActivity {
     FirebaseAuth fAuth;
     private String idUser;
     Spinner sp_Paciente = null;
-    Button NuevoPaciente, InformacionPaciente, historico, medicacion, diagrama;
+    Button NuevoPaciente, InformacionPaciente, historico, medicacion, diagrama, cerrar;
 
 
     @Override
@@ -50,6 +52,7 @@ public class Doctor extends AppCompatActivity {
         historico = findViewById(R.id.button_historico_paciente);
         medicacion = findViewById(R.id.button_medicacion);
         diagrama=findViewById(R.id.button_diagrama_paciente);
+        cerrar=findViewById(R.id.logout_doctor_btn);
 
         //Lamada de la funcion de carga de paciente
         carga_Paciente();
@@ -70,7 +73,7 @@ public class Doctor extends AppCompatActivity {
         idUser = fAuth.getCurrentUser().getUid();
 
         CollectionReference pacienteRef = fStore.collection("Usuarios").document(idUser).collection("Pacientes");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, usuarios);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.colorlayoutspinner, usuarios);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         sp_Paciente.setAdapter(adapter);
@@ -215,11 +218,14 @@ public class Doctor extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    public void logoutAdmin(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),Login.class));
-        finish();
+        cerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                finish();
+            }
+        });
     }
 }

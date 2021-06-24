@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -56,7 +57,6 @@ public class Diagrama_Paciente extends AppCompatActivity {
 
         regresarBtn = findViewById(R.id.regresar_diag_btn);
 
-
         sMonth=C.get(Calendar.MONTH)+1;
         sDay=C.get(Calendar.DAY_OF_MONTH);
         sYear=C.get(Calendar.YEAR);
@@ -73,17 +73,13 @@ public class Diagrama_Paciente extends AppCompatActivity {
             }
         });
 
-
         fStore = FirebaseFirestore.getInstance();
-
 
         fAuth = FirebaseAuth.getInstance();
 
         idUser = fAuth.getCurrentUser().getUid();
 
-        CollectionReference pacienteRef = fStore.collection("Usuarios").document(idUser).collection("spo2");
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, porcentaje);
-        //  adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
 
         //sp_Paciente.setAdapter(adapter);
         pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -174,7 +170,7 @@ public class Diagrama_Paciente extends AppCompatActivity {
 
                     idUser = fAuth.getCurrentUser().getUid();
 
-                    CollectionReference pacienteRef = fStore.collection("Usuarios").document(idUser).collection("spo2");
+                    Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
 
                     pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

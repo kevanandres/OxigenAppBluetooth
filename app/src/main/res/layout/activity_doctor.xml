@@ -4,8 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Doctor"
-    android:background="@drawable/fondo_login">
+    tools:context=".Doctor">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo12"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -26,56 +31,106 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="Bienvenido Doctor"
             android:textSize="50dp"
+            android:textColor="#fff"
+            android:layout_marginBottom="30dp"
             android:textAlignment="center"/>
 
         <Spinner
             android:id="@+id/spinner_Paciente"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/input_form_medicamento"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
 
         <Button
             android:id="@+id/button_historico_paciente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Historico"
-            app:backgroundTint="@color/botones" />
+            android:text="Histórico"
+            android:background="@drawable/btn_historico_color"
+            app:backgroundTint="#398AE5"
+            android:layout_marginBottom="20dp"
+            android:drawableLeft="@drawable/ic_historico"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/button_diagrama_paciente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Diagrama"
-            app:backgroundTint="@color/botones" />
+            android:background="@drawable/btn_diagrama_color"
+            android:drawableLeft="@drawable/ic_diagrama"
+            app:backgroundTint="#2A66A9"
+            android:layout_marginBottom="20dp"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/button_medicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medicacion"
-            app:backgroundTint="@color/botones" />
+            android:text="Asignar Medicación"
+            android:background="@drawable/btn_medicacion_color"
+            app:backgroundTint="#0B3461"
+            android:drawableLeft="@drawable/ic_medicacacion"
+            android:layout_marginBottom="20dp"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/button_informacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Informacion"
-            app:backgroundTint="@color/botones" />
+            android:text="Información"
+            android:background="@drawable/btn_informacion_color"
+            app:backgroundTint="#D03535"
+            android:drawableLeft="@drawable/ic_informacion"
+            android:layout_marginBottom="20dp"
+            android:textColor="#fff"/>
 
         <Button
             android:id="@+id/buttonAgregarPaciente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar Paciente"
-            app:backgroundTint="@color/botones" />
+            android:background="@drawable/btn_informacion_color"
+            app:backgroundTint="#C4992F"
+            android:drawableLeft="@drawable/ic_agregarpaciente"
+            android:layout_marginBottom="40dp"
+            android:textColor="#fff"/>
 
-        <Button
-            android:id="@+id/logout_doctor_btn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
-            android:onClick="logoutAdmin"
-            app:backgroundTint="@color/boton_cerrar_sesion" />
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cerrar Sesión"
+                android:textSize="20dp"
+                android:textColor="#fff" />
+        </LinearLayout>
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/logout_doctor_btn"
+        android:layout_width="60dp"
+        android:layout_height="63dp"
+        android:drawableLeft="@drawable/ic_cerrar_sesion"
+        android:text="Cerrar Sesion"
+        app:backgroundTint="@color/boton_cerrar_sesion"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="-10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,14 @@ import android.content.Intent;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        int spo2 = 0;
+
         ObtenerDatos paciente = new ObtenerDatos();
         paciente.conectar();
-        System.out.println(paciente.conectar());
+
+        if (paciente.conectar() > 0) {
+            spo2 = paciente.conectar();
+            System.out.println(spo2);
+        }
     }
 }

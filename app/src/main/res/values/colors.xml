@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="boton_primario">#FFFFFFFF</color>
-    <color name="boton_login">#21773E</color>
+    <color name="boton_login">#4B8560</color>
     <color name="boton_registro">#2B88BA</color>
-    <color name="boton_cerrar_sesion">#5E6568</color>
-    <color name="botones">#19D5AF</color>
+    <color name="boton_cerrar_sesion">#688679</color>
+    <color name="botones">#2B88BA</color>
 </resources>

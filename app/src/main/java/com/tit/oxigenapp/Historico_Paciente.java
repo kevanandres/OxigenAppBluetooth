@@ -79,7 +79,6 @@ public class Historico_Paciente extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
         recyclerViewHisorico.setAdapter(mAdapter);
 
-
         sMonth=C.get(Calendar.MONTH)+1;
         sDay=C.get(Calendar.DAY_OF_MONTH);
         sYear=C.get(Calendar.YEAR);
@@ -107,22 +106,12 @@ public class Historico_Paciente extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
         regresarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),Patient.class));
             }
         });
-
-
 
         buscarFecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,12 +154,6 @@ public class Historico_Paciente extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-
     }
 
     @Override

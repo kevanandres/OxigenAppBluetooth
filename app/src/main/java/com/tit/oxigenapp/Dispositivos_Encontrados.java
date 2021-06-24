@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
-import java.util.UUID;
 
 public class Dispositivos_Encontrados extends ListActivity {
 
@@ -41,10 +40,9 @@ public class Dispositivos_Encontrados extends ListActivity {
         mBTAdapter = BluetoothAdapter.getDefaultAdapter();
 
         regresarBtn = findViewById(R.id.Regresar_Dis_Btn);
-        spo2 = findViewById(R.id.textView14);
 
         //inicia BT
-        mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        mArrayAdapter = new ArrayAdapter<String>(this, R.layout.colorlayout);
         setListAdapter(mArrayAdapter);
 
         //Get Bluettoth Adapter
