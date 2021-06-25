@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,13 +35,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 public class Doctor extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
     private String idUser;
     Spinner sp_Paciente = null;
     Button NuevoPaciente, InformacionPaciente, historico, medicacion, diagrama, cerrar;
-
+    TextView bienvenido_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,9 @@ public class Doctor extends AppCompatActivity {
 
         fStore = FirebaseFirestore.getInstance();
 
+        fAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = fAuth.getCurrentUser();
+
         sp_Paciente = findViewById(R.id.spinner_Paciente);
         NuevoPaciente = findViewById(R.id.buttonAgregarPaciente);
         InformacionPaciente = findViewById(R.id.button_informacion);
@@ -53,6 +62,11 @@ public class Doctor extends AppCompatActivity {
         medicacion = findViewById(R.id.button_medicacion);
         diagrama=findViewById(R.id.button_diagrama_paciente);
         cerrar=findViewById(R.id.logout_doctor_btn);
+        bienvenido_txt = findViewById(R.id.bienvenidoDoctor_txt);
+
+        //obtenerDatos();
+
+        bienvenido_txt.setText(user.getEmail());
 
         //Lamada de la funcion de carga de paciente
         carga_Paciente();
@@ -71,9 +85,9 @@ public class Doctor extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         idUser = fAuth.getCurrentUser().getUid();
-
+        DocumentReference nombre = fStore.collection("Usuarios").document(idUser);
         CollectionReference pacienteRef = fStore.collection("Usuarios").document(idUser).collection("Pacientes");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.colorlayoutspinner, usuarios);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.style_spinner, usuarios);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         sp_Paciente.setAdapter(adapter);
@@ -228,4 +242,16 @@ public class Doctor extends AppCompatActivity {
             }
         });
     }
+
+    /*private void obtenerDatos() {
+        fAuth = FirebaseAuth.getInstance();
+        idUser = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("Usuarios").document(idUser);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                bienvenido_txt.setText(documentSnapshot.getString("Nombre Completo"));
+            }
+        });
+    }*/
 }

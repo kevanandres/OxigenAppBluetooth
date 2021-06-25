@@ -27,12 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Historico_Paciente_Doctor extends AppCompatActivity {
-
-
-
-
     Button regresarBtn, buscarFecha;
-    ;
     FirebaseFirestore fstore;
     FirebaseAuth fAuth;
     private String idUser;

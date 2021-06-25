@@ -76,7 +76,7 @@ public class Diagrama_Paciente_Doctor  extends AppCompatActivity {
 
         idUser = fAuth.getCurrentUser().getUid();
 
-        Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
+        Query pacienteRef =  fStore.collection("Usuarios").document(datos).collection("spo2").orderBy("fecha");
 
         //sp_Paciente.setAdapter(adapter);
         pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -162,7 +162,7 @@ public class Diagrama_Paciente_Doctor  extends AppCompatActivity {
 
                     idUser = fAuth.getCurrentUser().getUid();
 
-                    Query pacienteRef =  fStore.collection("Usuarios").document(idUser).collection("spo2").orderBy("fecha");
+                    Query pacienteRef =  fStore.collection("Usuarios").document(datos).collection("spo2").orderBy("fecha");
 
                     pacienteRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

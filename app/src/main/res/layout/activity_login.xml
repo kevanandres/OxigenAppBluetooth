@@ -117,7 +117,7 @@
                 android:text="¿Aún no tienes cuenta?"
                 android:textSize="14dp"
                 android:textColor="#fff"
-                />
+                android:paddingRight="10dp"/>
 
             <Button
                 android:id="@+id/register_btn"

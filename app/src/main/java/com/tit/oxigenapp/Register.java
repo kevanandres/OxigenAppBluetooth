@@ -55,8 +55,8 @@ public class Register extends AppCompatActivity {
         registerBtn =  findViewById(R.id.create_acount_btn);
         loginBtn =  findViewById(R.id.login_register_btn);
 
-        spRol.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.colorlayoutspinner,arrayRol));
-        spGenero.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.colorlayoutspinner,arrayGenero));
+        spRol.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.style_spinner,arrayRol));
+        spGenero.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.style_spinner,arrayGenero));
 
         spRol.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
